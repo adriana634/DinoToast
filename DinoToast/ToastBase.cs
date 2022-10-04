@@ -1,7 +1,7 @@
 ﻿using DinoToast.Services;
 using Microsoft.AspNetCore.Components;
 
-namespace DinoToast.Shared
+namespace DinoToast
 {
     public class ToastBase : ComponentBase, IDisposable
     {
@@ -42,17 +42,17 @@ namespace DinoToast.Shared
             Message = message;
         }
 
-        private void ShowToast(string message, ToastType toastType)
+        private async void ShowToast(ToastType toastType, string message)
         {
             BuildToastSettings(toastType, message);
             IsVisible = true;
-            StateHasChanged();
+            await InvokeAsync(StateHasChanged);
         }
 
-        private void HideToast()
+        private async void HideToast()
         {
             IsVisible = false;
-            StateHasChanged();
+            await InvokeAsync(StateHasChanged);
         }
 
         protected override void OnInitialized()

@@ -3,8 +3,11 @@
     public interface IToastService
     {
         event Action OnHide;
-        event Action<string, ToastType> OnShow;
+        event Action<ToastType, string> OnShow;
 
-        void ShowToast(string message, ToastType toastType);
+        void ShowInfo(string message);
+        void ShowSuccess(string message);
+        void ShowWarning(string message);
+        void ShowError(string message);
     }
 }

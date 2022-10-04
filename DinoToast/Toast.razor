@@ -1,0 +1,55 @@
+﻿@inherits ToastBase
+
+<div class="dino-toast @(IsVisible ? "dino-toast-visible" : null) @BackgroundCssClass">
+    <div class="dino-toast-icon">
+        <i class="bi bi-@IconCssClass" aria-hidden="true" />
+    </div>
+    <div class="dino-toast-body">
+        <div class="dino-toast-heading">@Heading</div>
+        <p>@Message</p>
+    </div>
+</div>
+
+<style>
+    .dino-toast {
+        display: none;
+        padding: .5rem;
+        color: #fff;
+        z-index: 1;
+        position: absolute;
+        width: 25rem;
+        bottom: 2rem;
+        right: 1rem;
+        border-radius: 1rem;
+    }
+
+    .dino-toast-icon {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 0 1rem;
+        font-size: 2.6rem;
+    }
+
+    .dino-toast-body {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        padding-left: 0.5rem;
+    }
+
+    .dino-toast-heading {
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+
+    .dino-toast-body p {
+        margin-bottom: 0;
+    }
+
+    .dino-toast-visible {
+        display: flex;
+        flex-direction: row;
+        animation: fadein 1.5s;
+    }
+</style>

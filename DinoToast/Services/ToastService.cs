@@ -3,9 +3,9 @@ using Timer = System.Timers.Timer;
 
 namespace DinoToast.Services
 {
-    public class ToastService : IToastService, IDisposable
+    public sealed class ToastService : IToastService, IDisposable
     {
-        public event Action<string, ToastType> OnShow;
+        public event Action<ToastType, string> OnShow;
         public event Action OnHide;
 
         private static readonly int INTERVAL = 5000;
@@ -41,11 +41,16 @@ namespace DinoToast.Services
             }
         }
 
-        public void ShowToast(string message, ToastType toastType)
+        private void ShowToast(ToastType toastType, string message)
         {
-            OnShow?.Invoke(message, toastType);
+            OnShow?.Invoke(toastType, message);
             StartCountdown();
         }
+
+        public void ShowInfo(string message) => ShowToast(ToastType.Info, message);
+        public void ShowSuccess(string message) => ShowToast(ToastType.Success, message);
+        public void ShowWarning(string message) => ShowToast(ToastType.Warning, message);
+        public void ShowError(string message) => ShowToast(ToastType.Error, message);
 
         public void Dispose()
         {

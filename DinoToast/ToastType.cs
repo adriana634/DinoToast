@@ -1,4 +1,4 @@
-﻿namespace DinoToast.Services
+﻿namespace DinoToast
 {
     public enum ToastType
     {
