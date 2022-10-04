@@ -1,13 +1,13 @@
 ﻿.toast {
     display: none;
-    padding: 1.5rem;
+    padding: 1rem;
     color: #fff;
     z-index: 1;
     position: absolute;
     width: 25rem;
-    top: 2rem;
+    bottom: 2rem;
+    right: 1rem;
     border-radius: 1rem;
-    left: 50%;
 }
 
 .toast-icon {
